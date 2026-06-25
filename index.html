@@ -7,225 +7,152 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #121212; }
     </style>
 </head>
 <body class="text-white min-h-screen flex justify-center items-center py-8 px-4">
 
-    <!-- PLAYER OCULTO DO YOUTUBE (MÚSICA DO MICHAEL JACKSON) -->
-    <iframe id="musica-player" class="hidden" width="1" height="1" 
-        src="https://www.youtube.com/embed/eIdc_PRvR0M?enablejsapi=1&controls=0" 
-        allow="autoplay">
-    </iframe>
+    <div id="musica-container" class="hidden"><div id="musica-player"></div></div>
 
     <div class="w-full max-w-[420px] flex flex-col gap-6">
 
-        <!-- 1. PLAYER ESTILO SPOTIFY -->
+        <!-- CARD DA MÚSICA -->
         <div class="bg-[#1a4b66] rounded-3xl p-5 shadow-2xl flex flex-col gap-4">
             <div class="flex justify-between items-center text-white/80 text-sm">
-                <span>▼</span>
-                <span class="font-medium text-xs">Juntos para sempre ❤️</span>
-                <span>...</span>
+                <span>▼</span><span class="font-medium text-xs">Juntos para sempre ❤️</span><span>...</span>
             </div>
-            
             <div class="w-full aspect-square rounded-2xl overflow-hidden shadow-lg">
-                <!-- Foto de vocês no espelho -->
-                <img src="https://i.postimg.cc/q687WwS6/Whats-App-Image-2026-06-25-at-5-01-48-PM.jpg" alt="Foto do casal" class="w-full h-full object-cover">
+                <img src="https://i.postimg.cc/q687WwS6/Whats-App-Image-2026-06-25-at-5-01-48-PM.jpg" class="w-full h-full object-cover">
             </div>
-
             <div class="flex justify-between items-center mt-2">
                 <div>
-                    <h1 class="text-xl font-bold tracking-tight">Rock With You</h1>
-                    <p class="text-white/70 text-sm">Michael Jackson</p>
+                    <h1 class="text-xl font-bold tracking-tight">ABC</h1>
+                    <p class="text-white/70 text-sm">The Jackson 5</p>
                 </div>
-                <div class="bg-white text-[#1a4b66] rounded-full p-1 w-6 h-6 flex items-center justify-center text-xs font-bold">✓</div>
-            </div>
-
-            <!-- Barra de Progresso -->
-            <div class="flex flex-col gap-1">
-                <div class="w-full bg-white/20 h-1 rounded-full relative">
-                    <div class="bg-white h-1 w-[35%] rounded-full relative">
-                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
-                    </div>
-                </div>
-                <div class="flex justify-between text-[10px] text-white/60">
-                    <span>0:45</span>
-                    <span>-2:55</span>
-                </div>
-            </div>
-
-            <!-- Controles de Mídia -->
-            <div class="flex justify-between items-center px-4 mt-1">
-                <span class="text-xl text-white/60">⇆</span>
-                <span class="text-xl">⏮</span>
-                <button id="btn-play-pause" class="bg-white text-black rounded-full w-14 h-14 flex items-center justify-center text-2xl pl-1 shadow-md transition-transform active:scale-95">
-                    ▶
-                </button>
-                <span class="text-xl">⏭</span>
-                <span class="text-xl text-white/60">↻</span>
+                <button id="btn-play-pause" class="bg-white text-black rounded-full w-14 h-14 flex items-center justify-center text-2xl pl-1">▶</button>
             </div>
         </div>
 
-        <!-- 2. SOBRE O CASAL E CONTADOR -->
+        <!-- CONTADOR PRECIOSO -->
         <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-4">
-            <h2 class="text-sm font-semibold text-white/60 uppercase tracking-wider">Sobre o casal</h2>
-            <div class="rounded-2xl overflow-hidden h-40 relative">
-                <!-- Foto do abraço com mar de fundo -->
-                <img src="https://i.postimg.cc/XBwvtLmp/Whats-App-Image-2026-06-25-at-5-01-49-PM.jpg" alt="Abraço do casal" class="w-full h-full object-cover">
-            </div>
-            <div>
-                <h3 class="text-xl font-bold">Dandan e Gabi</h3>
-                <p class="text-white/50 text-xs">Juntos desde 30/05/2025</p>
-            </div>
-            <div class="grid grid-cols-3 gap-2">
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="anos" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Anos</span>
-                </div>
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="meses" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Meses</span>
-                </div>
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="dias" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Dias</span>
-                </div>
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="horas" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Horas</span>
-                </div>
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="minutos" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Minutos</span>
-                </div>
-                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
-                    <span id="segundos" class="block text-xl font-bold">0</span>
-                    <span class="text-[10px] text-white/40">Segundos</span>
-                </div>
+            <h2 class="text-sm font-semibold text-white/60 uppercase">Nosso Tempo Juntos</h2>
+            <img src="https://i.postimg.cc/XBwvtLmp/Whats-App-Image-2026-06-25-at-5-01-49-PM.jpg" class="rounded-2xl h-40 w-full object-cover">
+            <h3 class="text-xl font-bold">Dandan e Gabi</h3>
+            
+            <!-- Grid de Tempo Expandido -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="anos" class="block font-bold text-lg">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Anos</span></div>
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="meses" class="block font-bold text-lg">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Meses</span></div>
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="dias" class="block font-bold text-lg">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Dias</span></div>
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="horas" class="block font-bold text-lg">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Horas</span></div>
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="minutos" class="block font-bold text-lg">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Minas</span></div>
+                <div class="bg-white/[0.03] rounded-xl p-2"><span id="segundos" class="block font-bold text-lg text-emerald-400">0</span><span class="text-[9px] opacity-50 uppercase tracking-wider">Segundos</span></div>
             </div>
         </div>
 
-        <!-- 3. MENSAGEM ESPECIAL E CONHEÇA -->
-        <div class="bg-[#4393c3] rounded-3xl p-5 text-slate-900 flex flex-col gap-4 shadow-lg">
-            <span class="text-xs font-bold uppercase tracking-wider opacity-60">Mensagem especial</span>
-            <p class="text-xl font-bold leading-snug">
-                E pensar que tudo começou do nada... ✨ Olha só pra gente agora: escrevendo nossa própria história!
+        <!-- MENSAGEM ESPECIAL -->
+        <div class="bg-[#e06666] rounded-3xl p-5 text-white flex flex-col gap-3 shadow-lg">
+            <span class="text-xs font-bold uppercase opacity-70">Mensagem especial ❤️</span>
+            <button onclick="toggleElemento('texto-oculto')" class="bg-white text-rose-900 rounded-full py-2 px-5 font-semibold text-sm self-start shadow-sm">Ler Mensagem</button>
+            <p id="texto-oculto" class="hidden text-base font-medium leading-relaxed mt-2 border-t border-white/20 pt-3">
+                Desde que você entrou na minha vida, o mundo ganhou mais cor e cada detalhe do dia a dia passou a fazer sentido. Você é meu porto seguro, meu sorriso mais sincero e a certeza de que a vida é muito mais bonita quando compartilhada com você. Te amo hoje, amanhã e sempre! ✨
             </p>
-            <button class="bg-white text-slate-900 rounded-full py-2.5 px-5 font-semibold text-sm self-start shadow-sm hover:bg-slate-100 transition-colors">
-                Mostrar Mensagem
-            </button>
         </div>
 
+        <!-- NOSSAS CONQUISTAS (Texto antigo realocado) -->
+        <div class="bg-[#4393c3] rounded-3xl p-5 text-slate-900 flex flex-col gap-3 shadow-lg">
+            <span class="text-xs font-bold uppercase opacity-60">Nossas Conquistas</span>
+            <button onclick="toggleElemento('conquistas-oculto')" class="bg-white text-slate-900 rounded-full py-2 px-5 font-semibold text-sm self-start shadow-sm">Ver Detalhes</button>
+            <p id="conquistas-oculto" class="hidden text-base font-bold leading-snug mt-1">
+                O amor não diminuiu mesmo com tamanha distância, os piores momentos nos deixam mais fortes e a dúvida nunca vai superar a certeza do nosso amor. ✨
+            </p>
+        </div>
+
+        <!-- MINI GALERIA -->
         <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-4">
-            <h2 class="text-sm font-semibold text-white/60">Conheça Dandan e Gabi</h2>
-            <div class="grid grid-cols-3 gap-2">
+            <div class="grid grid-cols-3 gap-2 text-center">
                 <div class="flex flex-col gap-1">
-                    <!-- Foto restaurante -->
-                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="https://i.postimg.cc/RJc02dyW/Whats-App-Image-2026-06-25-at-5-00-36-PM.jpg" class="w-full h-full object-cover"></div>
-                    <span class="text-[10px] text-center text-white/70 mt-1">Nossos Dates</span>
+                    <img src="https://i.postimg.cc/RJc02dyW/Whats-App-Image-2026-06-25-at-5-00-36-PM.jpg" class="aspect-[3/4] rounded-xl object-cover">
+                    <span class="text-[10px] opacity-70">Os melhores</span>
                 </div>
                 <div class="flex flex-col gap-1">
-                    <!-- Foto sorrindo céu ao fundo -->
-                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="https://i.postimg.cc/30gwz1Vy/Whats-App-Image-2026-06-25-at-5-00-36-PM-1.jpg" class="w-full h-full object-cover"></div>
-                    <span class="text-[10px] text-center text-white/70 mt-1">Fotos aleatórias</span>
+                    <img src="https://i.postimg.cc/30gwz1Vy/Whats-App-Image-2026-06-25-at-5-00-36-PM-1.jpg" class="aspect-[3/4] rounded-xl object-cover">
+                    <span class="text-[10px] opacity-70">Momentos</span>
                 </div>
                 <div class="flex flex-col gap-1">
-                    <!-- Foto na praia -->
-                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="https://i.postimg.cc/BPxvRpkv/Whats-App-Image-2026-06-25-at-5-03-18-PM.jpg" class="w-full h-full object-cover"></div>
-                    <span class="text-[10px] text-center text-white/70 mt-1">Primeira viagem</span>
+                    <img src="https://i.postimg.cc/BPxvRpkv/Whats-App-Image-2026-06-25-at-5-03-18-PM.jpg" class="aspect-[3/4] rounded-xl object-cover">
+                    <span class="text-[10px] opacity-70">São com você</span>
                 </div>
             </div>
-        </div>
-
-        <!-- 4. CONQUISTAS E RETROSPECTIVA -->
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-3">
-            <div class="flex justify-between items-center mb-1">
-                <h2 class="text-sm font-semibold text-white/80">Conquistas</h2>
-                <span class="bg-white/10 text-white/60 text-[10px] px-2 py-0.5 rounded-full">17/30</span>
-            </div>
-            <div class="grid grid-cols-4 gap-2">
-                <div class="aspect-square border border-yellow-500/30 bg-yellow-500/5 rounded-xl flex items-center justify-center text-lg">🏆</div>
-                <div class="aspect-square border border-purple-500/20 bg-purple-500/5 rounded-xl flex items-center justify-center text-lg">🎉</div>
-                <div class="aspect-square border border-orange-500/20 bg-orange-500/5 rounded-xl flex items-center justify-center text-lg">🔥</div>
-                <div class="aspect-square border border-blue-500/20 bg-blue-500/5 rounded-xl flex items-center justify-center text-lg">💎</div>
-            </div>
-        </div>
-
-        <div class="relative bg-black rounded-3xl p-6 overflow-hidden min-h-[220px] flex flex-col justify-center items-center border border-white/10 shadow-2xl text-center">
-            <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-pink-500 via-red-500 to-purple-600 opacity-80 blur-[2px]"></div>
-            <h2 class="text-2xl md:text-3xl font-bold tracking-tight z-10">Sua Retrospectiva</h2>
-            <p class="text-white/60 text-xs md:text-sm mt-1 z-10">Explore o seu tempo de casal</p>
-            <a href="surpesa" class="mt-5 px-8 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 inline-block text-sm z-10">
-                Vamos lá
-            </a>
-            <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-purple-600 via-red-500 to-pink-500 opacity-80 blur-[2px]"></div>
         </div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
-
     <script>
-        // --- 1. CONTROLE DE ÁUDIO ---
-        let player;
-        const btnPlayPause = document.getElementById('btn-play-pause');
-        let tocando = false;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('musica-player', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            });
+        // Função genérica para abrir/fechar as mensagens
+        function toggleElemento(id) {
+            const elemento = document.getElementById(id);
+            elemento.classList.toggle('hidden');
         }
 
-        btnPlayPause.addEventListener('click', () => {
-            if (!player) return;
-            if (!tocando) {
-                player.playVideo();
-                btnPlayPause.innerText = '⏸';
-                tocando = true;
-            } else {
-                player.pauseVideo();
-                btnPlayPause.innerText = '▶';
-                tocando = false;
+        // Player do YouTube
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('musica-player', { height: '1', width: '1', videoId: '9R23p-P2l8E' });
+        }
+        
+        document.getElementById('btn-play-pause').addEventListener('click', () => {
+            if (player && typeof player.getPlayerState === 'function') {
+                if (player.getPlayerState() === 1) { 
+                    player.pauseVideo(); 
+                    document.getElementById('btn-play-pause').innerText = '▶'; 
+                } else { 
+                    player.playVideo(); 
+                    document.getElementById('btn-play-pause').innerText = '⏸'; 
+                }
             }
         });
 
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                btnPlayPause.innerText = '▶';
-                tocando = false;
-            }
-        }
-
-        // --- 2. CONTADOR DE TEMPO REAL AJUSTADO (30/05/2025) ---
+        // Contador Ultra Preciso (Data de Início: 30 de Maio de 2025)
         const dataInicio = new Date(2025, 4, 30, 0, 0, 0); 
 
         function atualizarContador() {
             const agora = new Date();
-            const diferenca = agora - dataInicio;
-
-            const segundos = Math.floor((diferenca / 1000) % 60);
-            const minutos = Math.floor((diferenca / 1000 / 60) % 60);
-            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
             
             let anos = agora.getFullYear() - dataInicio.getFullYear();
             let meses = agora.getMonth() - dataInicio.getMonth();
             let dias = agora.getDate() - dataInicio.getDate();
+            let horas = agora.getHours() - dataInicio.getHours();
+            let minutos = agora.getMinutes() - dataInicio.getMinutes();
+            let segundos = agora.getSeconds() - dataInicio.getSeconds();
 
+            // Ajuste dos segundos
+            if (segundos < 0) {
+                segundos += 60;
+                minutos--;
+            }
+            // Ajuste dos minutos
+            if (minutos < 0) {
+                minutos += 60;
+                horas--;
+            }
+            // Ajuste das horas
+            if (horas < 0) {
+                horas += 24;
+                dias--;
+            }
+            // Ajuste dos dias e meses complexos
             if (dias < 0) {
+                const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+                dias += mesAnterior.getDate();
                 meses--;
-                const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
-                dias += ultimoMes.getDate();
             }
             if (meses < 0) {
-                anos--;
                 meses += 12;
+                anos--;
             }
 
+            // Atualiza os valores na tela
             document.getElementById('anos').innerText = anos;
             document.getElementById('meses').innerText = meses;
             document.getElementById('dias').innerText = dias;
@@ -234,6 +161,7 @@
             document.getElementById('segundos').innerText = segundos;
         }
 
+        // Executa a cada 1 segundo
         setInterval(atualizarContador, 1000);
         atualizarContador();
     </script>
