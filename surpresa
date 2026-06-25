@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um presente para você 🎁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex justify-center items-center py-8 px-4">
+
+    <!-- CONTAINER CENTRALIZADO DO ESTILO DO APP -->
+    <div class="w-full max-w-[420px] flex flex-col gap-6">
+
+        <!-- 1. PLAYER ESTILO SPOTIFY (image_83bd96.jpg) -->
+        <div class="bg-[#1a4b66] rounded-3xl p-5 shadow-2xl flex flex-col gap-4">
+            <div class="flex justify-between items-center text-white/80 text-sm">
+                <span>svg-seta-baixo</span>
+                <span class="font-medium text-xs">Juntos para sempre ❤️</span>
+                <span>...</span>
+            </div>
+            
+            <!-- Foto do Casal Principal -->
+            <div class="w-full aspect-square rounded-2xl overflow-hidden shadow-lg">
+                <img src="SUA_FOTO_AQUI.jpg" alt="Foto do casal" class="w-full h-full object-cover">
+            </div>
+
+            <div class="flex justify-between items-center mt-2">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Still Loving You</h1>
+                    <p class="text-white/70 text-sm">Panda</p>
+                </div>
+                <div class="bg-white text-[#1a4b66] rounded-full p-1 w-6 h-6 flex items-center justify-center text-xs font-bold">✓</div>
+            </div>
+
+            <!-- Barra de Progresso -->
+            <div class="flex flex-col gap-1">
+                <div class="w-full bg-white/20 h-1 rounded-full relative">
+                    <div class="bg-white h-1 w-[75%] rounded-full relative">
+                        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                </div>
+                <div class="flex justify-between text-[10px] text-white/60">
+                    <span>3:09</span>
+                    <span>-1:37</span>
+                </div>
+            </div>
+
+            <!-- Controles de Mídia -->
+            <div class="flex justify-between items-center px-4 mt-1">
+                <span class="text-xl text-white/60">⇆</span>
+                <span class="text-xl">⏮</span>
+                <button class="bg-white text-black rounded-full w-14 h-14 flex items-center justify-center text-2xl pl-1 shadow-md">⏸</button>
+                <span class="text-xl">⏭</span>
+                <span class="text-xl text-white/60">↻</span>
+            </div>
+        </div>
+
+
+        <!-- 2. SOBRE O CASAL E CONTADOR (image_83bd98.jpg) -->
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-4">
+            <h2 class="text-sm font-semibold text-white/60 uppercase tracking-wider">Sobre o casal</h2>
+            
+            <div class="rounded-2xl overflow-hidden h-40 relative">
+                <img src="SUA_FOTO_ABRACO.jpg" alt="Abraço do casal" class="w-full h-full object-cover">
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold">Leonardo e Yasmin</h3>
+                <p class="text-white/50 text-xs">Juntos desde 2022</p>
+            </div>
+
+            <!-- Grid do Contador Dinâmico -->
+            <div class="grid grid-cols-3 gap-2">
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="anos" class="block text-xl font-bold">3</span>
+                    <span class="text-[10px] text-white/40">Anos</span>
+                </div>
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="meses" class="block text-xl font-bold">9</span>
+                    <span class="text-[10px] text-white/40">Meses</span>
+                </div>
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="dias" class="block text-xl font-bold">14</span>
+                    <span class="text-[10px] text-white/40">Dias</span>
+                </div>
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="horas" class="block text-xl font-bold">16</span>
+                    <span class="text-[10px] text-white/40">Horas</span>
+                </div>
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="minutos" class="block text-xl font-bold">42</span>
+                    <span class="text-[10px] text-white/40">Minutos</span>
+                </div>
+                <div class="bg-white/[0.03] border border-white/5 rounded-xl p-3 text-center">
+                    <span id="segundos" class="block text-xl font-bold">20</span>
+                    <span class="text-[10px] text-white/40">Segundos</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 3. MENSAGEM ESPECIAL E CONHEÇA (image_83bdb7.jpg) -->
+        <div class="bg-[#4393c3] rounded-3xl p-5 text-slate-900 flex flex-col gap-4 shadow-lg">
+            <span class="text-xs font-bold uppercase tracking-wider opacity-60">Mensagem especial</span>
+            <p class="text-xl font-bold leading-snug">
+                E pensar que tudo começou do nada... ✨ Olha só pra gente agora: escrevendo nossa própria história, que-
+            </p>
+            <button class="bg-white text-slate-900 rounded-full py-2.5 px-5 font-semibold text-sm self-start shadow-sm hover:bg-slate-100 transition-colors">
+                Mostrar Mensagem
+            </button>
+        </div>
+
+        <!-- Galeria Conheça -->
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-4">
+            <h2 class="text-sm font-semibold text-white/60">Conheça Leonardo e Yasmin</h2>
+            <div class="grid grid-cols-3 gap-2">
+                <div class="flex flex-col gap-1">
+                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="DATA1.jpg" class="w-full h-full object-cover"></div>
+                    <span class="text-[10px] text-center text-white/70 mt-1">Nossos Dates</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="DATA2.jpg" class="w-full h-full object-cover"></div>
+                    <span class="text-[10px] text-center text-white/70 mt-1">Fotos aleatórias</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="aspect-[3/4] bg-white/10 rounded-xl overflow-hidden"><img src="DATA3.jpg" class="w-full h-full object-cover"></div>
+                    <span class="text-[10px] text-center text-white/70 mt-1">Primeira viagem</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 4. CONQUISTAS E RETROSPECTIVA (image_83bdbb.jpg) -->
+        <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col gap-3">
+            <div class="flex justify-between items-center mb-1">
+                <h2 class="text-sm font-semibold text-white/80">Conquistas</h2>
+                <span class="bg-white/10 text-white/60 text-[10px] px-2 py-0.5 rounded-full">17/30</span>
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+                <div class="aspect-square border border-yellow-500/30 bg-yellow-500/5 rounded-xl flex items-center justify-center text-lg">🏆</div>
+                <div class="aspect-square border border-purple-500/20 bg-purple-500/5 rounded-xl flex items-center justify-center text-lg">🎉</div>
+                <div class="aspect-square border border-orange-500/20 bg-orange-500/5 rounded-xl flex items-center justify-center text-lg">🔥</div>
+                <div class="aspect-square border border-blue-500/20 bg-blue-500/5 rounded-xl flex items-center justify-center text-lg">💎</div>
+            </div>
+        </div>
+
+        <!-- Bloco de Retrospectiva com o seu Botão integrado -->
+        <div class="relative bg-black rounded-3xl p-6 overflow-hidden min-h-[220px] flex flex-col justify-center items-center border border-white/10 shadow-2xl text-center">
+            
+            <!-- Ondas decorativas simuladas com gradiente do background -->
+            <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-pink-500 via-red-500 to-purple-600 opacity-80 blur-[2px]"></div>
+            
+            <h2 class="text-2xl md:text-3xl font-bold tracking-tight z-10">Sua Retrospectiva</h2>
+            <p class="text-white/60 text-xs md:text-sm mt-1 z-10">Explore o seu tempo de casal</p>
+            
+            <!-- O BOTÃO REDIRECIONANDO PARA A PÁGINA "SURPESA" -->
+            <a href="surpesa" class="mt-5 px-8 py-2.5 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold rounded-full shadow-lg transition-transform transform hover:scale-105 inline-block text-sm z-10">
+                Vamos lá
+            </a>
+
+            <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-r from-purple-600 via-red-500 to-pink-500 opacity-80 blur-[2px]"></div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT DE CONTAGEM AUTOMÁTICA DE TEMPO -->
+    <script>
+        // Defina a data de quando vocês começaram a namorar (Ano, Mês [0-11], Dia, Hora, Minuto)
+        const dataInicio = new Date(2022, 8, 11, 0, 0, 0); 
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - dataInicio;
+
+            const segundos = Math.floor((diferenca / 1000) % 60);
+            const minutos = Math.floor((diferenca / 1000 / 60) % 60);
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            
+            // Cálculo aproximado de anos, meses e dias
+            let anos = agora.getFullYear() - dataInicio.getFullYear();
+            let meses = agora.getMonth() - dataInicio.getMonth();
+            let dias = agora.getDate() - dataInicio.getDate();
+
+            if (dias < 0) {
+                meses--;
+                const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
+                dias += ultimoMes.getDate();
+            }
+            if (meses < 0) {
+                anos--;
+                meses += 12;
+            }
+
+            document.getElementById('anos').innerText = anos;
+            document.getElementById('meses').innerText = meses;
+            document.getElementById('dias').innerText = dias;
+            document.getElementById('horas').innerText = horas;
+            document.getElementById('minutos').innerText = minutos;
+            document.getElementById('segundos').innerText = segundos;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+</body>
+</html>
